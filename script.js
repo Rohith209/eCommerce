@@ -1,18 +1,18 @@
-$(document).ready(function() {
-    $('header .navbar .navbar-nav li a').click(function(e){
-        $(this).addClass('active');
-        //e.preventDefault();
-    })
+$(document).ready(function () {
+  $("header .navbar .navbar-nav li a").click(function (e) {
+    $(this).addClass("active");
+    //e.preventDefault();
+  });
 
-    $.ajax({
-        url: 'https://fakestoreapi.com/products',
-        type: 'GET',
-        datatype: JSON,
-        success: function(products){
-            var productsLength = products.length;
-            var htmlUpdate = '';
-            for(let i = 0; i < products.length; i++) {
-            htmlUpdate += `
+  $.ajax({
+    url: "https://fakestoreapi.com/products",
+    type: "GET",
+    datatype: JSON,
+    success: function (products) {
+      var productsLength = products.length;
+      var htmlUpdate = "";
+      for (let i = 0; i < products.length; i++) {
+        htmlUpdate += `
                 <div class="pro">
                     <img src="${products[i].image}" alt="">
                     <div class="desc">
@@ -33,16 +33,16 @@ $(document).ready(function() {
                 </div>
                 
                 `;
-            }
-            //console.log('The Updated HTML is: ' + htmlUpdate);
-            $('.pro-container').append(htmlUpdate);
-        }
-    });
+      }
+      //console.log('The Updated HTML is: ' + htmlUpdate);
+      $(".pro-container").append(htmlUpdate);
+    },
+  });
 
-    $('#loadmore').click(function(){
-        $('#products-sec .pro-container .pro:hidden').slice(0,4).show();
-        if($('#products-sec .pro-container .pro:hidden').length == 0) {
-            $('#loadmore').fadeOut();
-        }
-    })
-})
+  $("#loadmore").click(function () {
+    $("#products-sec .pro-container .pro:hidden").slice(0, 4).show();
+    if ($("#products-sec .pro-container .pro:hidden").length == 0) {
+      $("#loadmore").fadeOut();
+    }
+  });
+});
