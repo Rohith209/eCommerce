@@ -4,6 +4,10 @@ $(document).ready(function () {
     //e.preventDefault();
   });
 
+  $('#mobile #bar, #close').click(function () {
+    $('.navbar-collapse').toggleClass('active');
+  })
+
   $.ajax({
     url: "https://fakestoreapi.com/products",
     type: "GET",
